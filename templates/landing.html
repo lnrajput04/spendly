@@ -21,7 +21,7 @@
         </p>
         <div class="sh-actions">
             <a href="{{ url_for('register') }}" class="sh-btn-primary">Create free account</a>
-            <a href="#" class="sh-btn-outline">See how it works</a>
+            <a href="#" class="sh-btn-outline" id="how-it-works-trigger">See how it works</a>
         </div>
 
         <div class="sh-panel">
@@ -99,4 +99,60 @@
     </div>
 </section>
 
+<div class="sh-modal" id="how-it-works-modal" aria-hidden="true">
+    <div class="sh-modal-overlay" data-modal-close></div>
+    <div class="sh-modal-content" role="dialog" aria-modal="true" aria-label="How Spendly works">
+        <button type="button" class="sh-modal-close" data-modal-close aria-label="Close">&times;</button>
+        <div class="sh-modal-video">
+            <iframe
+                id="how-it-works-iframe"
+                data-src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                src=""
+                title="How Spendly works"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+    var trigger = document.getElementById('how-it-works-trigger');
+    var modal = document.getElementById('how-it-works-modal');
+    var iframe = document.getElementById('how-it-works-iframe');
+    var closeEls = modal.querySelectorAll('[data-modal-close]');
+
+    function openModal(event) {
+        event.preventDefault();
+        iframe.src = iframe.dataset.src + '?autoplay=1';
+        modal.classList.add('sh-modal-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('sh-modal-open');
+        modal.setAttribute('aria-hidden', 'true');
+        iframe.src = '';
+        document.body.style.overflow = '';
+    }
+
+    trigger.addEventListener('click', openModal);
+
+    closeEls.forEach(function (el) {
+        el.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && modal.classList.contains('sh-modal-open')) {
+            closeModal();
+        }
+    });
+})();
+</script>
 {% endblock %}
