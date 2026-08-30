@@ -1,0 +1,212 @@
+/* ------------------------------------------------------------------ */
+/* Hero section — Spendly landing page                                 */
+/* ------------------------------------------------------------------ */
+
+:root {
+    --sh-green: #2f9e6b;
+    --sh-green-light: #e3f6ec;
+    --sh-red: #e0524d;
+    --sh-orange: #f2a93b;
+    --sh-blue: #4c7ff0;
+    --sh-purple: #8b6fef;
+    --sh-panel-bg: #f5f4f1;
+}
+
+.sh-hero {
+    padding: 4rem 2rem 3rem;
+}
+
+.sh-hero-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sh-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--sh-green-light);
+    color: var(--sh-green);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border-radius: 999px;
+    margin-bottom: 1.75rem;
+}
+
+.sh-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sh-green);
+    display: inline-block;
+}
+
+.sh-title {
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: clamp(2.25rem, 1rem + 5vw, 3.75rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+}
+
+.sh-title-accent { color: var(--sh-green); }
+
+.sh-subtitle {
+    font-size: 1.15rem;
+    color: var(--ink-muted);
+    max-width: 640px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+}
+
+.sh-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3.5rem;
+}
+
+.sh-btn-primary,
+.sh-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.75rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: opacity 0.2s, background 0.2s, color 0.2s;
+}
+
+.sh-btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.sh-btn-primary:hover { opacity: 0.85; }
+
+.sh-btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+}
+
+.sh-btn-outline:hover {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.sh-panel {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--sh-panel-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: left;
+}
+
+.sh-panel-dots {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.sh-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.sh-dot-red { background: #f16963; }
+.sh-dot-yellow { background: #f2b84b; }
+.sh-dot-green { background: #6fcf97; }
+
+.sh-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.sh-stat {
+    background: var(--paper-card);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.sh-stat-label {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+}
+
+.sh-stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.sh-stat-delta {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.sh-stat-delta-negative { color: var(--sh-red); }
+.sh-stat-delta-positive { color: var(--sh-green); }
+.sh-stat-delta-muted { color: var(--ink-faint); }
+
+.sh-progress-list {
+    background: var(--paper-card);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sh-progress-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sh-progress-label {
+    width: 70px;
+    flex-shrink: 0;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+}
+
+.sh-progress-track {
+    flex: 1;
+    height: 10px;
+    background: var(--border-soft);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.sh-progress-bar {
+    height: 100%;
+    border-radius: 999px;
+}
+
+.sh-progress-orange { background: var(--sh-orange); }
+.sh-progress-blue { background: var(--sh-blue); }
+.sh-progress-purple { background: var(--sh-purple); }
+
+@media (max-width: 640px) {
+    .sh-stats { grid-template-columns: 1fr; }
+
+    .sh-actions { flex-direction: column; align-items: stretch; }
+
+    .sh-btn-primary,
+    .sh-btn-outline { width: 100%; }
+}
