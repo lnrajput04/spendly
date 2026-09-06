@@ -93,3 +93,30 @@ def seed_db():
         conn.commit()
 
     conn.close()
+
+
+def get_user_by_email(email):
+    """Return the user row matching email (case-insensitive), or None if not found."""
+    conn = get_db()
+    user = conn.execute(
+        "SELECT * FROM users WHERE LOWER(email) = LOWER(?)", (email,)
+    ).fetchone()
+    conn.close()
+    return user
+
+
+def create_user(name, email, password_hash):
+    """Insert a new user and return its id."""
+    conn = get_db()
+    conn.execute(
+        "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)",
+        (name, email, password_hash),
+    )
+    conn.commit()
+
+    user_id = conn.execute(
+        "SELECT id FROM users WHERE email = ?", (email,)
+    ).fetchone()["id"]
+
+    conn.close()
+    return user_id
