@@ -120,3 +120,21 @@ def create_user(name, email, password_hash):
 
     conn.close()
     return user_id
+
+
+def get_user_by_id(user_id):
+    """Return the user row matching id, or None if not found."""
+    conn = get_db()
+    user = conn.execute("SELECT * FROM users WHERE id = ?", (user_id,)).fetchone()
+    conn.close()
+    return user
+
+
+def get_expenses_by_user(user_id):
+    """Return all expenses belonging to user_id, most recent first."""
+    conn = get_db()
+    expenses = conn.execute(
+        "SELECT * FROM expenses WHERE user_id = ? ORDER BY date DESC", (user_id,)
+    ).fetchall()
+    conn.close()
+    return expenses
