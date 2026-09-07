@@ -524,6 +524,132 @@ a { color: inherit; text-decoration: none; }
 .legal-section li { margin-bottom: 0.4rem; }
 
 /* ------------------------------------------------------------------ */
+/* Profile page                                                        */
+/* ------------------------------------------------------------------ */
+
+.profile-section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+}
+
+.profile-header { margin-bottom: 2rem; }
+
+.profile-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+}
+
+.profile-subtitle {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+}
+
+.profile-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.profile-card-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--ink);
+}
+
+.profile-total {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--ink);
+}
+
+.profile-field {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.profile-field:last-child { border-bottom: none; }
+
+.profile-field-label {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+}
+
+.profile-field-value {
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 500;
+}
+
+.expense-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.expense-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.expense-row:last-child { border-bottom: none; }
+
+.expense-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.expense-desc {
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 500;
+}
+
+.expense-category {
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.expense-date {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+}
+
+.expense-amount {
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 600;
+    text-align: right;
+}
+
+.profile-empty {
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+    padding: 1rem 0;
+}
+
+/* ------------------------------------------------------------------ */
 /* Footer                                                              */
 /* ------------------------------------------------------------------ */
 
@@ -573,4 +699,12 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 600px) {
     .nav-links a:not(.nav-cta) { display: none; }
     .hero { padding: 3rem 1rem 2rem; }
+
+    .expense-row {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+    }
+
+    .expense-date { grid-column: 1; }
+    .expense-amount { grid-column: 2; grid-row: 1 / 3; }
 }

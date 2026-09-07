@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Your Profile — Spendly{% endblock %}
+
+{% block content %}
+
+<section class="profile-section">
+    <div class="profile-header">
+        <h1 class="profile-title">Welcome back, {{ user.name }}</h1>
+        <p class="profile-subtitle">Member since {{ member_since }}</p>
+    </div>
+
+    <div class="profile-card">
+        <h2 class="profile-card-title">Account</h2>
+        <div class="profile-field">
+            <span class="profile-field-label">Name</span>
+            <span class="profile-field-value">{{ user.name }}</span>
+        </div>
+        <div class="profile-field">
+            <span class="profile-field-label">Email</span>
+            <span class="profile-field-value">{{ user.email }}</span>
+        </div>
+    </div>
+
+    <div class="profile-card">
+        <div class="profile-card-header">
+            <h2 class="profile-card-title">Your Expenses</h2>
+            <span class="profile-total">₹{{ "%.2f"|format(total) }}</span>
+        </div>
+
+        {% if expenses %}
+        <div class="expense-list">
+            {% for expense in expenses %}
+            <div class="expense-row">
+                <div class="expense-info">
+                    <span class="expense-desc">{{ expense.description }}</span>
+                    <span class="expense-category">{{ expense.category }}</span>
+                </div>
+                <span class="expense-date">{{ expense.date }}</span>
+                <span class="expense-amount">₹{{ "%.2f"|format(expense.amount) }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="profile-empty">No expenses yet.</p>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}
